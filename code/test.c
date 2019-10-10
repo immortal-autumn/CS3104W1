@@ -13,13 +13,11 @@ int main(void)
     printf("Allocating 1024 * sizeof(int)... \n");
 
     int* ptr = myalloc(1024*sizeof(int));
-    ptr[1024] = 123;
-    printf("%lu\n%lu\n", &ptr[0], &ptr[1023]);
+    ptr[1023] = 123;
+    // printf("%lu\n%lu\n", &ptr[0], ptr);
 
     printf("Freeing the allocated memory... \n");
-    // myfree(ptr);
+    myfree(ptr);
 
     printf("Yay!\n");
-    printf("%i", getpid());
-    while(1);
 }

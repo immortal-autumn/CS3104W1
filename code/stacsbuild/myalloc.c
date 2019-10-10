@@ -57,14 +57,15 @@ void * myalloc(int size){
 		init -> size = size;
 		init -> next = NULL;
 		init -> free = IS_USE;
+		// printf("FREE BLOCK: %i, %lu\n", init -> free, &(init -> free));
 		return (void*)init + block_size;
 	}
 	else {
 		t_head * ptr = init;
 		while (ptr -> free == IS_USE || ptr -> size < size) {
 			if (ptr -> next == NULL) {
-				ptr -> next = create_next(size, (void*)ptr + block_size);
-				return (void*)ptr + block_size;
+				ptr -> next = create_next(size, ptr + block_size);
+				return ptr + block_size;
 			}
 		}
 		return ptr + block_size;
@@ -73,6 +74,7 @@ void * myalloc(int size){
 
 void myfree(void *ptr){
 	t_head * node = ptr - block_size;
+	// printf("FREE BLOCK: %i, %lu\n", node -> free, &(node -> free));
 	if (node -> free == IS_USE) {
 		node -> free = IS_FREE;
 	}
