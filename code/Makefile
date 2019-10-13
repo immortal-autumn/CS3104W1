@@ -3,11 +3,15 @@ CFLAGS= -g
 LIBOBJS = myalloc.o
 LIB=myalloc
 LIBFILE=lib$(LIB).a
-TESTS = test1 test2 test3 test4 test5
+TESTS = test test1 test2 test3 test4 test5
+
 all: $(TESTS) 
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< 
+
+test : test.o $(LIB)
+	$(CC) test.o $(CFLAGS) -o test -L. -l$(LIB) -lpthread
 
 test1 : test1.o $(LIB)
 	$(CC) test1.o $(CFLAGS) -o test1 -L. -l$(LIB)
