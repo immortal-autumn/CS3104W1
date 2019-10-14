@@ -97,10 +97,35 @@ void test2() {
     printf("Yay!\n");
 }
 
+void test3() {
+    printf("Allocating 1024 * sizeof(int)... \n");
+    int* ptr1 = myalloc(5*sizeof(int));
+
+    //third malloc
+    printf("Allocating 1024 * sizeof(int)... \n");
+    int* ptr2 = myalloc(8 * sizeof(int));
+
+    for(int i = 0; i < 5; i++) {
+        ptr1[i] = i;
+    }
+    my_mem_cpy(ptr1, ptr2, 5 * sizeof(int));
+
+    for(int i = 0; i < 5; i++) {
+        printf("Check looping for round %i : ptr1[%i] = %i ptr2[%i] = %i\n", i, i, ptr1[i], i, ptr2[i]);
+        ptr2[i] = i;
+    }
+}
+
+void test4() { //REALLOC
+
+}
+
 int main(void)
 {
     divide(1);
     test1();
     divide(2);
     test2();
+    divide(3);
+    test3();
 }

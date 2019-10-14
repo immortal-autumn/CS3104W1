@@ -1,6 +1,6 @@
 /*Stuart Norcross - 12/03/10 */
 
-/* Ver - 12.10.2019.2 - Malloc with */
+/* Ver - 7.10.2019.1 - Malloc with basic requirement */
 
 #define _GNU_SOURCE //Define MAP_ANONYMOUS
 #define MALLOC_FAILED MAP_FAILED
@@ -57,6 +57,11 @@ void * list_read(int size, t_head * node) {
 	return list_read(size, node -> next);
 }
 
+/*
+malloc: read through the free list, find a bigger space; if not, create a new node
+We need a global initial block for storing the head node
+However we need to override the malloc first.
+*/
 void * myalloc(int size){
 	printf("Processing: size %i\n", size);
 	if (size <= 0) return MALLOC_FAILED;
@@ -77,57 +82,9 @@ void myfree(void *ptr){
 	// printf("Node of %lu status: %i\n", ptr, node -> free);
 	if (node -> free == IS_USE) {
 		node -> free = IS_FREE;
-		char* arrow = ptr;
-		for (int i = 0; i < node -> size; i++) { //initialise the space
-			*arrow = 0;
-			arrow++;
-		}
 	}
 	else {
 		printf("Free failed!\n");
 	}
 	// printf("Node of %lu freed status: %i\n", ptr, node -> free);
-}
-
-void my_mem_cpy(void * target, void * dest, int size) {
-	char* tar = target;
-	char* dest_val = dest;
-	for (int i = 0; i < size; i++) {
-		dest_val[i] = tar[i];
-	}
-}
-
-/*
-realloc: 4 situations
-if memory not allocated : Allocate memory with size
-if size = 0 : Free and return nothing
-if size >= ptr -> size: Malloc a larger space, mem_copy it
-if size < ptr -> size: Malloc a smaller space, delete the data after ptr
-*/
-void * myrealloc(void *ptr, int size) {
-	t_head * node = ptr - block_size;
-	if (node -> free == IS_FREE) {
-		return myalloc(size);
-	}
-	else{
-		if (size == 0) {
-			myfree(ptr);
-			return MALLOC_FAILED;
-		}
-		if (size >= node -> size) {
-			void * new_ptr = myalloc(size);
-			my_mem_cpy(ptr, new_ptr, node -> size);
-			myfree(ptr);
-			return new_ptr;
-		}
-		if (size < node -> size) {
-			int sub = node -> size - size;
-			char* dest = ptr;
-			for(int i = 0; i < sub; i++) {
-				dest[size + i] = 0;
-			}
-			return (void*)dest;
-		}
-	}
-	return MALLOC_FAILED;	
 }
