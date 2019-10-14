@@ -1,6 +1,6 @@
 /*Stuart Norcross - 12/03/10 */
 
-/* Ver - 7.10.2019.1 - Malloc without thread safe */
+/* Ver - 7.10.2019.1 - Malloc with basic requirement */
 
 #define _GNU_SOURCE //Define MAP_ANONYMOUS
 #define MALLOC_FAILED MAP_FAILED
