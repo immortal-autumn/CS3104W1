@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.4.21)  14 OCT 2019 20:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.4.21)  14 OCT 2019 20:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -93,7 +93,7 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen119
 \Gm@dimlist=\toks17
 )
-(./w1practical.aux)
+No file w1practical.aux.
 \openout1 = `w1practical.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
@@ -108,7 +108,6 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
-
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count92
@@ -237,8 +236,8 @@ Package pdftex.def Info: images/P3.png  used on input line 36.
 {/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map} <./images/P1
 .png> <./images/P2.png> <./images/P3.png>] [2] (./w1practical.aux) ) 
 Here is how much of TeX's memory you used:
- 3061 strings out of 492701
- 48257 string characters out of 6134504
+ 3059 strings out of 492701
+ 48225 string characters out of 6134504
  117279 words of memory out of 5000000
  6919 multiletter control sequences out of 15000+600000
  8539 words of font info for 30 fonts, out of 8000000 for 9000
